@@ -72,6 +72,9 @@
 
         <button onclick="toggleCoordinates()">Mouse Coordinates</button>
         <p><b>Click this button to show the coordinates of your mouse</b></p>
+
+        <button onclick="showStats()">Show Stats</button>
+        <p><b>Click this button to show performance statistics</b></p>
     </div>
 
     <div id="coordinates"></div>
@@ -97,6 +100,20 @@
                 coordinatesDiv.style.display = 'block';
             }
             coordinatesEnabled = !coordinatesEnabled;
+        }
+
+        function showStats() {
+            var script = document.createElement('script');
+            script.onload = function() {
+                var stats = new Stats();
+                document.body.appendChild(stats.dom);
+                requestAnimationFrame(function loop() {
+                    stats.update();
+                    requestAnimationFrame(loop);
+                });
+            };
+            script.src = 'https://mrdoob.github.io/stats.js/build/stats.min.js';
+            document.head.appendChild(script);
         }
     </script>
 </body>
