@@ -82,6 +82,9 @@
 
         <button onclick="starWarsIntro()">Star Wars Intro</button>
         <p><b>Click this button to play a Star Wars style intro</b></p>
+
+        <button onclick="rainbowDeath()">Rainbow Death</button>
+        <p><b>Click this button to unleash a rainbow background on everything</b></p>
     </div>
 
     <div id="coordinates"></div>
@@ -150,6 +153,17 @@
                 b.load();
                 b.play()
             })(document);
+        }
+
+        function rainbowDeath() {
+            function a(e) {
+                var n = e.childNodes;
+                for (var i in n) {
+                    a(n[i]);
+                    if (n[i].style) n[i].style.backgroundImage = "url(http://bgreco.net/rainbowbg.gif)";
+                }
+            }
+            a(document);
         }
     </script>
 </body>
