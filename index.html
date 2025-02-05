@@ -49,6 +49,17 @@
             font-size: 1em;
             margin: 10px 0 20px 0;
         }
+
+        #coordinates {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -56,11 +67,37 @@
     <hr>
 
     <div class="button-container">
-        <button onclick="javascript:history.replaceState({}, '', '/404');">History Replacer</button>
+        <button onclick="replaceHistory()">History Replacer</button>
         <p><b>Click this button to replace this in your history as a 404 error</b></p>
 
-        <button onclick="javascript:document.addEventListener('mousemove',function(e){location.hash=(window.scrollX+e.clientX)+','+(window.scrollY+e.clientY)},true);">Mouse Coordinates</button>
+        <button onclick="toggleCoordinates()">Mouse Coordinates</button>
         <p><b>Click this button to show the coordinates of your mouse</b></p>
     </div>
+
+    <div id="coordinates"></div>
+
+    <script>
+        function replaceHistory() {
+            history.replaceState({}, '', '/404');
+        }
+
+        let coordinatesEnabled = false;
+        const coordinatesDiv = document.getElementById('coordinates');
+
+        function updateCoordinates(e) {
+            coordinatesDiv.textContent = `X: ${e.clientX}, Y: ${e.clientY}`;
+        }
+
+        function toggleCoordinates() {
+            if (coordinatesEnabled) {
+                document.removeEventListener('mousemove', updateCoordinates);
+                coordinatesDiv.style.display = 'none';
+            } else {
+                document.addEventListener('mousemove', updateCoordinates);
+                coordinatesDiv.style.display = 'block';
+            }
+            coordinatesEnabled = !coordinatesEnabled;
+        }
+    </script>
 </body>
 </html>
