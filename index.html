@@ -83,11 +83,14 @@
         <button onclick="starWarsIntro()">Star Wars Intro</button>
         <p><b>Click this button to play a Star Wars style intro</b></p>
 
-        <button onclick="rainbowDeath()">White Death</button>
-        <p><b>Click this button to unleash a white background on everything</b></p>
+        <button onclick="rainbowDeath()">Rainbow Death</button>
+        <p><b>Click this button to unleash a rainbow background on everything</b></p>
 
         <button onclick="pourposeVirus()">Pourpose Virus</button>
         <p><b>Click this to get a few viruses</b></p>
+
+        <button onclick="guessTheNumberGame()">Guess The Number Game</button>
+        <p><b>Click this button to play a number guessing game</b></p>
     </div>
 
     <div id="coordinates"></div>
@@ -176,6 +179,33 @@
                     while(1)location.reload(1)
                 }
             }, 1000);
+        }
+
+        function guessTheNumberGame() {
+            var x = 0;
+            alert("Guess A Number Between 1 And 20");
+            function getRandomNumberBetween(min, max) {
+                return Math.floor(Math.random() * (max - min + 1) + min);
+            }
+            var a = getRandomNumberBetween(1, 20);
+            while (true) {
+                var v = prompt("What Number Do You Guess?");
+                if (v == a) {
+                    x = x + 1;
+                    alert("You Got It! It Only Took You " + x + " Tries!");
+                    break;
+                } else if (v > 20) {
+                    alert("Please Guess A Number Between Or Equal To 1 And 20!");
+                } else if (v < 1) {
+                    alert("Please Guess A Number Between Or Equal To 1 And 20!");
+                } else if (v > a) {
+                    x = x + 1;
+                    alert("Too High!");
+                } else if (v < a) {
+                    x = x + 1;
+                    alert("Too Low!");
+                }
+            }
         }
     </script>
 </body>
