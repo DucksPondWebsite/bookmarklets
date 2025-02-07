@@ -91,9 +91,6 @@
 
         <button onclick="guessTheNumberGame()">Guess The Number Game</button>
         <p><b>Click this button to play a number guessing game</b></p>
-
-        <button onclick="googleAnywhere()">Google Anywhere</button>
-        <p><b>Click this button to open Google in an iframe anywhere on the page</b></p>
     </div>
 
     <div id="coordinates"></div>
@@ -207,12 +204,6 @@
                 } else if (v < a) {
                     x = x + 1;
                     alert("Too Low!");
-                }
-            }
-        }
-
-        function googleAnywhere() {
-            javascript:((function()%7Bvar a,b,c;c="https://www.google.com/?igu=1",b=document.createElement("iframe"),b.setAttribute("src",c),b.setAttribute("id","rusic-modal"),b.setAttribute("style","position: fixed; z-index: 999999; width: 1375px; height: 675px; right: 0px; top: 0px; border: 0px solid #8834af; overflow: hidden; background-color: #fff;"),a=document.getElementsByTagName("body")%5B0%5D,a.appendChild(b)%7D)).call(this)
                 }
             }
         }
